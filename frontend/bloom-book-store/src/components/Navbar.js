@@ -3,8 +3,18 @@ import { useEffect, useState } from "react";
 import "../components/Navbar.css";
 import searchlogo from "../images/search.png";
 import logo from "../images/bloom_logo.png";
+import useLogout from "../hooks/useLogout";
+import useAuthContext from "../hooks/useAuthContext";
 
 const Navbar = () => {
+  const { logout } = useLogout();
+
+  const { user } = useAuthContext();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const [isScrolled, setIsScrolled] = useState(false);
@@ -107,8 +117,17 @@ const Navbar = () => {
           <button className="search-btn" onClick={() => handleSearch()}>
             <img src={searchlogo} alt="Search" className="search-icon" />
           </button>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
+          {user && (
+            <button onClick={handleLogout} className="logout">
+              Log out
+            </button>
+          )}
+          {!user && (
+            <div className="loginSignup">
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Signup</Link>
+            </div>
+          )}
         </nav>
       </div>
     </header>

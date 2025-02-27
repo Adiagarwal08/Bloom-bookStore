@@ -35,3 +35,13 @@
   font-size: 16px;
   margin: 3vh 2vw 0 3vw;
 }
+
+.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid #e7195a;
+  color: #e7195a;
+  border-radius: 4px;
+  margin: 20px 0;
+  width: 20vw;
+}

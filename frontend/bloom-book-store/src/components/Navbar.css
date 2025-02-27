@@ -58,6 +58,16 @@
   cursor: pointer;
 }
 
+.logout {
+  background-color: #1d7b84;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 12px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .search-input {
   padding: 1.5vh 1vw;
   border: 1px solid #090909;
@@ -74,4 +84,9 @@
 .search-icon {
   height: 25px;
   width: 25px;
+}
+
+.loginSignup {
+  display: flex;
+  gap: 1vw;
 }
