@@ -1,0 +1,24 @@
+.book-component {
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+}
+
+.book-component:hover {
+  transform: scale(1.05);
+}
+
+.book-component img {
+  width: 160px;
+  height: 250px;
+  cursor: pointer;
+  margin-bottom: 3vh;
+}
+
+p {
+  font-size: 12px;
+  margin-top: 0;
+}

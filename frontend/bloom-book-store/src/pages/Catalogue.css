@@ -1,0 +1,63 @@
+.catalogue {
+  position: relative;
+  top: 10vh;
+  padding: 5vh 10vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.sorting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sorting label {
+  font-weight: bold;
+}
+
+.sorting select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.catalogue-books {
+  margin-top: 5vh;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4vw;
+  justify-content: space-between;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  gap: 10px;
+}
+
+.pagination button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: bold;
+}

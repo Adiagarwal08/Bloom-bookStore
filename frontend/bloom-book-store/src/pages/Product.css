@@ -1,0 +1,171 @@
+.product {
+  position: relative;
+  top: 20vh;
+  padding: 5vh 10vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+h3 {
+  margin: 30px 0px 4px 0px;
+}
+
+.product-split {
+  display: flex;
+  gap: 5vw;
+  margin-bottom: 7vh;
+}
+
+.product-left {
+  flex: 1;
+}
+
+.book-icon {
+  height: 70vh;
+  width: 25vw;
+}
+
+.opinion {
+  height: 10vh;
+  width: 35vw;
+}
+
+.product-right {
+  margin-top: 6vh;
+  flex: 1;
+}
+
+.shipping {
+  margin: 4vh 0 2vh 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.zip {
+  padding: 1vh 0.5vw 1vh 1vw;
+  border: 1.5px solid #000000;
+}
+
+.zip-ok {
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.9vh 1.5vh;
+  border-left: none;
+}
+
+.price {
+  margin: 6vh 0 2vh 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 40vw;
+  background-color: #28a745; /* Green background */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.add-to-cart {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  margin-right: 3vw;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add-to-cart:hover {
+  background-color: #e65c00;
+}
+
+.add-to-cart.added {
+  background-color: #28a745;
+  cursor: default;
+}
+
+.like {
+  display: flex;
+  margin: 5vh 0 12vh 0;
+}
+
+.like-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.like-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.wishlst-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.wishlist {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  width: 100px;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.stars {
+  display: flex;
+  color: #007c89;
+  font-size: 30px;
+  margin-right: 8px;
+}
+
+.star {
+  margin-right: 2px;
+}
+
+.rating-text {
+  font-weight: bold;
+  color: #007c89;
+  margin-right: 8px;
+}
+
+.review-count {
+  font-weight: normal;
+}
+
+.see-more {
+  color: gray;
+  font-style: italic;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.four-books {
+  margin: 5vh 0;
+  display: flex;
+  gap: 5vw;
+  flex-wrap: wrap;
+}

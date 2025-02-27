@@ -1,0 +1,108 @@
+.image-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  width: 100vw;
+  height: 766px;
+  background-image: url("C:\backup\coding\Web Development\Bloom bookStore\frontend\bloom-book-store\src\images\home.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 14, 14, 0.5);
+}
+
+.shop-now {
+  background-color: #1d7b84;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 10px 12px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  width: 8vw;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.home-div {
+  padding: 1vh 10vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-div p {
+  font-size: 14px;
+}
+
+.quote-divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1.5px;
+  background-color: black;
+}
+
+.quote-mark {
+  font-size: 30px;
+  margin: 0 10px;
+  font-family: serif;
+}
+
+.f-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 11vw;
+}
+
+.handBook {
+  height: 60vh;
+  width: 27vw;
+}
+
+.learn-more {
+  border: none;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.bloom-programming {
+  text-align: left;
+  width: 600px;
+}
+
+.home-books {
+  margin-top: 5vh;
+  display: flex;
+  gap: 4vw;
+  flex-wrap: wrap;
+}
+
+.home-books img {
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+}

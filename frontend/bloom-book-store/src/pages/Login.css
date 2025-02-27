@@ -1,0 +1,37 @@
+.login {
+  position: relative;
+  top: 20vh;
+  left: 30vw;
+  padding: 5vh 10vw;
+  margin-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 20vw;
+  gap: 1vh;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+.login label {
+  font-size: 16px;
+}
+
+.login input {
+  padding: 1vh 1vw;
+  height: 4vh;
+  width: 20vw;
+  border-radius: 4px;
+  border: 1px solid #e7195a;
+  outline: none;
+  font-size: 14px;
+}
+
+.login button {
+  padding: 1.5vh 2vw;
+  border-radius: 20px;
+  background-color: #000000;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  margin: 3vh 2vw 0 3vw;
+}
