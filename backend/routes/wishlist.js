@@ -8,7 +8,12 @@ import {
   deleteWishlist,
 } from "../controllers/wishlistController.js";
 
+import requireAuth from "../middleware/requireAuth.js";
+
 const router = express.Router();
+
+//require auth for all book routes
+router.use(requireAuth);
 
 //GET all wishlist items
 router.get("/", getWishlists);

@@ -7,7 +7,12 @@ import {
   deleteCart,
 } from "../controllers/cartController.js";
 
+import requireAuth from "../middleware/requireAuth.js";
+
 const router = express.Router();
+
+//require auth for all book routes
+router.use(requireAuth);
 
 //GET all cart items
 router.get("/", getCarts);
