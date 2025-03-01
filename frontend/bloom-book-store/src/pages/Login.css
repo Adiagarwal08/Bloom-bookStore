@@ -45,3 +45,13 @@
   margin: 20px 0;
   width: 20vw;
 }
+
+.register {
+  margin: 10px 0;
+  text-align: end;
+}
+
+.register span {
+  color: #6358dc;
+  cursor: pointer;
+}

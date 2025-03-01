@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 
 //get all cart items
 const getCarts = async (req, res) => {
-  const items = await Cart.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id;
+
+  const items = await Cart.find({ user_id }).sort({ createdAt: -1 });
 
   res.status(200).json(items);
 };
@@ -31,6 +33,8 @@ const createCart = async (req, res) => {
   const { image, title, author, price, quantity, wishlist } = req.body;
 
   try {
+    const user_id = req.user._id;
+
     const item = await Cart.create({
       image,
       title,
@@ -38,6 +42,7 @@ const createCart = async (req, res) => {
       price,
       quantity,
       wishlist,
+      user_id,
     });
     res.status(200).json(item);
   } catch (error) {

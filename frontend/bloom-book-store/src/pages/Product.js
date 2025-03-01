@@ -5,6 +5,7 @@ import "../pages/Product.css";
 import like from "../images/like.png";
 import Book from "../components/Book";
 import like_filled from "../images/like_filled.png";
+import useAuthContext from "../hooks/useAuthContext";
 
 const Product = () => {
   const { id } = useParams();
@@ -15,6 +16,10 @@ const Product = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
 
   const [fourBooks, setFourBooks] = useState([]);
+
+  const { user } = useAuthContext();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,7 +43,11 @@ const Product = () => {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const response = await fetch("/api/wishlists");
+        const response = await fetch("/api/wishlists", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         if (!response.ok) throw new Error("Failed to fetch book");
 
         const data = await response.json();
@@ -48,8 +57,11 @@ const Product = () => {
         console.error("Error fetching wishlist:", error);
       }
     };
-    fetchWishlist();
-  }, []);
+
+    if (user) {
+      fetchWishlist();
+    }
+  }, [user]);
 
   const existingWishlistItem = book
     ? wishlistItems.find((wishlistItem) => wishlistItem.title === book.title)
@@ -78,16 +90,22 @@ const Product = () => {
     fetchFourBooks();
   }, []);
 
-  const navigate = useNavigate();
-
   const handleClick = (bookId) => {
     navigate(`/book/${bookId}`);
   };
 
   const handleCart = async (item) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
     try {
       //✅ Step 1: fetch existing cart data
-      const cartResponse = await fetch("/api/carts");
+      const cartResponse = await fetch("/api/carts", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       if (!cartResponse.ok) throw new Error("Failed to fetch cart");
       const cartItems = await cartResponse.json();
 
@@ -104,6 +122,7 @@ const Product = () => {
           body: JSON.stringify({ quantity: existingItem.quantity + 1 }),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
         });
         if (!updateResponse.ok)
@@ -124,6 +143,7 @@ const Product = () => {
           body: JSON.stringify(cartItem),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
         });
         const json = await response.json();
@@ -144,6 +164,10 @@ const Product = () => {
   };
 
   const handleWishlist = async (book) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
     try {
       if (addedToWishlist) {
         // delete book from wishlist
@@ -151,6 +175,9 @@ const Product = () => {
           `/api/wishlists/${existingWishlistItem._id}`,
           {
             method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
           }
         );
         const json = await deleteResponse.json();
@@ -161,7 +188,11 @@ const Product = () => {
         setAddedToWishlist(false);
 
         // ✅ Also update the cart if the book exists in the cart
-        const cartResponse = await fetch("/api/carts");
+        const cartResponse = await fetch("/api/carts", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         if (!cartResponse.ok) throw new Error("Failed to fetch cart");
 
         const cartItems = await cartResponse.json();
@@ -173,7 +204,10 @@ const Product = () => {
           const updateCartResponse = await fetch(`/api/carts/${cartItem._id}`, {
             method: "PATCH",
             body: JSON.stringify({ wishlist: false }), // Set wishlist to false
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
           });
           if (!updateCartResponse.ok)
             throw new Error("Failed to update cart wishlist");
@@ -190,6 +224,7 @@ const Product = () => {
           body: JSON.stringify(wishlistItem),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
         });
         const json = await response.json();
@@ -200,7 +235,11 @@ const Product = () => {
         setAddedToWishlist(true);
 
         // ✅ Also update the cart if the book exists in the cart
-        const cartResponse = await fetch("/api/carts");
+        const cartResponse = await fetch("/api/carts", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         if (!cartResponse.ok) throw new Error("Failed to fetch cart");
 
         const cartItems = await cartResponse.json();
@@ -212,7 +251,10 @@ const Product = () => {
           const updateCartResponse = await fetch(`/api/carts/${cartItem._id}`, {
             method: "PATCH",
             body: JSON.stringify({ wishlist: true }), // Set wishlist to true
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
           });
           if (!updateCartResponse.ok)
             throw new Error("Failed to update cart wishlist");

@@ -4,9 +4,12 @@ import emptyCart from "../images/empty-cart.jpeg";
 import { useEffect } from "react";
 import useCartsContext from "../hooks/useCartsContext";
 import { Link } from "react-router-dom";
+import useAuthContext from "../hooks/useAuthContext";
 
 const Cart = () => {
   const { carts, dispatch } = useCartsContext();
+
+  const { user } = useAuthContext();
 
   const subtotal =
     carts?.reduce((acc, item) => acc + item.price * item.quantity, 0) || 0;
@@ -14,7 +17,11 @@ const Cart = () => {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const response = await fetch("/api/carts");
+        const response = await fetch("/api/carts", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         if (!response.ok) throw new Error("No such item");
 
         const json = await response.json();
@@ -24,8 +31,10 @@ const Cart = () => {
       }
     };
 
-    fetchItem();
-  }, [dispatch, carts]);
+    if (user) {
+      fetchItem();
+    }
+  }, [dispatch, carts, user]);
   return (
     <div className="cart">
       <h1 style={{ textAlign: "center" }}>Cart</h1>

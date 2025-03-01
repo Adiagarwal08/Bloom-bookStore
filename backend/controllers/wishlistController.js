@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 
 //get all wishlist items
 const getWishlists = async (req, res) => {
-  const items = await Wishlist.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id;
+
+  const items = await Wishlist.find({ user_id }).sort({ createdAt: -1 });
 
   res.status(200).json(items);
 };
@@ -31,8 +33,11 @@ const createWishlist = async (req, res) => {
   const { title } = req.body;
 
   try {
+    const user_id = req.user._id;
+
     const item = await Wishlist.create({
       title,
+      user_id,
     });
     res.status(200).json(item);
   } catch (error) {

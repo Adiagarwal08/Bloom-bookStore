@@ -1,16 +1,23 @@
 import { useState } from "react";
 import "../pages/Signup.css";
 import useSignup from "../hooks/useSignup";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await signup(email, password);
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -32,6 +39,10 @@ const Signup = () => {
       />
 
       <button disabled={isLoading}>Sign up</button>
+      <p className="register">
+        Already have an account?{" "}
+        <span onClick={() => handleLogin()}>Login</span>
+      </p>
       {error && <div className="error">{error}</div>}
     </form>
   );

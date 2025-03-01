@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../pages/Login.css";
 import useLogin from "../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,10 +9,16 @@ const Login = () => {
 
   const { login, error, isLoading } = useLogin();
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await login(email, password);
+  };
+
+  const handleSignup = () => {
+    navigate("/signup");
   };
 
   return (
@@ -33,6 +40,10 @@ const Login = () => {
       />
 
       <button disabled={isLoading}>Login</button>
+      <p className="register">
+        Don't have an account?{" "}
+        <span onClick={() => handleSignup()}>Register</span>
+      </p>
       {error && <div className="error">{error}</div>}
     </form>
   );

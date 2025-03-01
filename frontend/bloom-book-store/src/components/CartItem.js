@@ -4,11 +4,14 @@ import like_filled from "../images/like_filled.png";
 import gift_box from "../images/gift_box.png";
 import useCartsContext from "../hooks/useCartsContext";
 import { useState, useEffect } from "react";
+import useAuthContext from "../hooks/useAuthContext";
 
 const CartItem = ({ item }) => {
   const { dispatch } = useCartsContext();
 
   const [wishlist, setWishlist] = useState(item.wishlist);
+
+  const { user } = useAuthContext();
 
   useEffect(() => {
     setWishlist(item.wishlist);
@@ -16,10 +19,16 @@ const CartItem = ({ item }) => {
   const total = item.price * item.quantity;
 
   const handleClick = async (quantity) => {
+    if (!user) {
+      return;
+    }
     try {
       if (quantity === 0) {
         const deleteResponse = await fetch(`/api/carts/${item._id}`, {
           method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
         });
         const json = await deleteResponse.json();
 
@@ -33,6 +42,7 @@ const CartItem = ({ item }) => {
           body: JSON.stringify({ quantity: quantity }),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
         });
         if (!updateResponse.ok)

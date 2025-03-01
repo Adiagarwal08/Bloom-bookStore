@@ -11,6 +11,8 @@ const Navbar = () => {
 
   const { user } = useAuthContext();
 
+  const user_letter = user ? user.email[0].toUpperCase() : "";
+
   const handleLogout = () => {
     logout();
   };
@@ -122,12 +124,10 @@ const Navbar = () => {
               Log out
             </button>
           )}
-          {!user && (
-            <div className="loginSignup">
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
-            </div>
-          )}
+          {!user && <Link to="/login">Login</Link>}
+          <div className="user-icon">
+            {user ? user_letter : <i className="fa-solid fa-user"></i>}
+          </div>
         </nav>
       </div>
     </header>
