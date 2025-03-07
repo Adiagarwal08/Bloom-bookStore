@@ -16,6 +16,7 @@ const Cart = () => {
 
   useEffect(() => {
     const fetchItem = async () => {
+      console.log(user);
       try {
         const response = await fetch("/api/carts", {
           headers: {

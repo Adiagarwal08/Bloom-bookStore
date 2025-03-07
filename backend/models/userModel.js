@@ -13,7 +13,11 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: true,
+    },
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true, // Allows null values
     },
   },
   { timestamps: true }

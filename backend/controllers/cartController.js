@@ -3,11 +3,15 @@ import mongoose from "mongoose";
 
 //get all cart items
 const getCarts = async (req, res) => {
-  const user_id = req.user._id;
+  try {
+    console.log(req.user);
+    const user_id = req.user._id;
 
-  const items = await Cart.find({ user_id }).sort({ createdAt: -1 });
-
-  res.status(200).json(items);
+    const items = await Cart.find({ user_id }).sort({ createdAt: -1 });
+    res.status(200).json(items);
+  } catch (e) {
+    res.status(400).json([]);
+  }
 };
 
 //get a single cart item

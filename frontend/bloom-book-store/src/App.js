@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import useAuthContext from "./hooks/useAuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 //pages and components
 import Home from "./pages/Home";
@@ -12,6 +11,7 @@ import Event from "./pages/Event";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AuthSuccess from "./pages/AuthSuccess";
 
 function App() {
   const { user } = useAuthContext();
@@ -26,6 +26,7 @@ function App() {
             <Route path="/book/:id" element={<Product />} />
             <Route path="/catalogue" element={<Catalogue />} />
             <Route path="/events" element={<Event />} />
+            <Route path="/auth-success" element={<AuthSuccess />} />
             <Route
               path="/cart"
               element={user ? <Cart /> : <Navigate to="/login" />}

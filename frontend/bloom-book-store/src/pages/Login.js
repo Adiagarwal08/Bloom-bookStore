@@ -25,21 +25,24 @@ const Login = () => {
   return (
     <form className="login" onSubmit={handleSubmit}>
       <h1>Log in</h1>
+      <a href="http://localhost:4000/auth/google">
+        <button
+          type="button"
+          className="google"
+          style={{
+            color: "#000000",
+            backgroundColor: "#f7f5f5",
+            fontSize: "12px",
+            border: "1px solid #bfbfbf",
+            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.3)",
+            padding: "13px",
+          }}
+        >
+          <img src={google} alt="google" />
+          Login with Google
+        </button>
+      </a>
 
-      <button
-        className="google"
-        style={{
-          color: "#000000",
-          backgroundColor: "#f7f5f5",
-          fontSize: "12px",
-          border: "1px solid #bfbfbf",
-          boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.3)",
-          padding: "13px",
-        }}
-      >
-        <img src={google} alt="google" />
-        Login with Google
-      </button>
       <div className="quote-divider">
         <div className="or-line"></div>
         <span className="or">OR</span>
@@ -55,12 +58,16 @@ const Login = () => {
 
       <label>Password:</label>
       <input
+        required={true}
         type="password"
+        minLength={4}
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
 
-      <button disabled={isLoading}>Login</button>
+      <button type="submit" disabled={isLoading}>
+        Login
+      </button>
       <p className="register">
         Don't have an account?{" "}
         <span onClick={() => handleSignup()}>Register</span>
