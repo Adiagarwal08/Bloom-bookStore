@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../pages/Login.css";
 import useLogin from "../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
+import google from "../images/google.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,6 +25,26 @@ const Login = () => {
   return (
     <form className="login" onSubmit={handleSubmit}>
       <h1>Log in</h1>
+
+      <button
+        className="google"
+        style={{
+          color: "#000000",
+          backgroundColor: "#f7f5f5",
+          fontSize: "12px",
+          border: "1px solid #bfbfbf",
+          boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.3)",
+          padding: "13px",
+        }}
+      >
+        <img src={google} alt="google" />
+        Login with Google
+      </button>
+      <div className="quote-divider">
+        <div className="or-line"></div>
+        <span className="or">OR</span>
+        <div className="or-line"></div>
+      </div>
 
       <label>Email:</label>
       <input

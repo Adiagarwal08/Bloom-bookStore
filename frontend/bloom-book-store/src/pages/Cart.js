@@ -34,7 +34,7 @@ const Cart = () => {
     if (user) {
       fetchItem();
     }
-  }, [dispatch, carts, user]);
+  }, [dispatch, user]);
   return (
     <div className="cart">
       <h1 style={{ textAlign: "center" }}>Cart</h1>

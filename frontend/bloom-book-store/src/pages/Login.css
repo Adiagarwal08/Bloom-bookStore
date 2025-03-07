@@ -28,12 +28,14 @@
 
 .login button {
   padding: 1.5vh 2vw;
-  border-radius: 20px;
-  background-color: #000000;
+  border-radius: 4px;
+  background-color: #6358dc;
   border: none;
   color: #ffffff;
   font-size: 16px;
-  margin: 3vh 2vw 0 3vw;
+  width: 22vw;
+  margin: 3vh 0;
+  cursor: pointer;
 }
 
 .error {
@@ -54,4 +56,35 @@
 .register span {
   color: #6358dc;
   cursor: pointer;
+}
+
+.quote-divider {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  width: 22vw;
+}
+
+.or-line {
+  flex-grow: 1;
+  height: 1.5px;
+  background-color: #bfbfbf;
+}
+
+.or {
+  font-size: 10px;
+  margin: 0 10px;
+  font-family: serif;
+}
+
+.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.login img {
+  height: 20px;
+  width: 20px;
 }
