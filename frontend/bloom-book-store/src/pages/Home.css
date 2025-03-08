@@ -1,4 +1,3 @@
-/* Default styles (for laptops and standard screens) */
 .image-div {
   display: flex;
   flex-direction: column;
@@ -7,11 +6,12 @@
   text-align: center;
   color: #ffffff;
   width: 100vw;
-  height: 80vh; /* Adjusted for better scaling */
+  height: 766px;
   background-image: url("../images/home.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
   position: relative;
 }
 
@@ -31,15 +31,15 @@
   border-radius: 20px;
   padding: 10px 12px;
   border: none;
-  font-size: 1rem;
+  font-size: 12px;
   font-weight: 600;
-  min-width: 120px;
+  width: 8vw;
   cursor: pointer;
   z-index: 2;
 }
 
 .home-div {
-  padding: 2vh 5vw; /* Adjusted for better spacing */
+  padding: 1vh 10vw;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@
 }
 
 .home-div p {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .quote-divider {
@@ -63,7 +63,7 @@
 }
 
 .quote-mark {
-  font-size: 1.8rem;
+  font-size: 30px;
   margin: 0 10px;
   font-family: serif;
 }
@@ -71,13 +71,12 @@
 .f-row {
   display: flex;
   justify-content: space-between;
-  gap: 5vw;
-  flex-wrap: wrap; /* Ensures proper wrapping on smaller screens */
+  gap: 11vw;
 }
 
 .handBook {
   height: 60vh;
-  max-width: 100%; /* Prevents overflow */
+  width: 27vw;
 }
 
 .learn-more {
@@ -86,94 +85,24 @@
   color: #ffffff;
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 12px;
   cursor: pointer;
 }
 
 .bloom-programming {
   text-align: left;
-  max-width: 600px;
+  width: 600px;
 }
 
 .home-books {
   margin-top: 5vh;
   display: flex;
   gap: 4vw;
-  flex-wrap: wrap; /* Ensures proper wrapping */
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .home-books img {
   width: 150px;
   height: auto;
   cursor: pointer;
-  max-width: 100%;
-}
-
-/* Mobile Screens */
-@media (max-width: 768px) {
-  .image-div {
-    height: 60vh; /* Reduce height for smaller screens */
-  }
-
-  .shop-now {
-    width: 50%;
-    font-size: 0.9rem;
-  }
-
-  .home-div {
-    padding: 3vh 5vw;
-  }
-
-  .home-div p {
-    font-size: 0.9rem;
-  }
-
-  .quote-mark {
-    font-size: 1.5rem;
-  }
-
-  .f-row {
-    flex-direction: column; /* Stack items vertically */
-    gap: 3vh;
-    align-items: center;
-  }
-
-  .handBook {
-    width: 80%; /* Make images adapt */
-    height: auto;
-  }
-
-  .bloom-programming {
-    width: 90%;
-    text-align: center;
-  }
-
-  .home-books img {
-    width: 120px; /* Slightly smaller for mobile */
-  }
-}
-
-/* Large Screens (above 1400px) */
-@media (min-width: 1400px) {
-  .image-div {
-    height: 100vh;
-  }
-
-  .home-div {
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  .bloom-programming {
-    width: 700px;
-  }
-
-  .handBook {
-    width: 35vw;
-  }
-
-  .home-books img {
-    width: 180px;
-  }
 }
