@@ -36,6 +36,31 @@ const Cart = () => {
       fetchItem();
     }
   }, [dispatch, user]);
+
+  const handleCheckout = async () => {
+    if (!user || !user.email) {
+      alert("Please log in first.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/email/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user.email }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Order placed! Confirmation email sent.");
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      alert("Error sending email.");
+    }
+  };
+
   return (
     <div className="cart">
       <h1 style={{ textAlign: "center" }}>Cart</h1>
@@ -100,7 +125,9 @@ const Cart = () => {
             products. It’s important to note that we will not charge additional
             shipping fees, even if we make multiple shipments for your order.
           </p>
-          <button className="checkout">CHECKOUT</button>
+          <button className="checkout" onClick={handleCheckout}>
+            CHECKOUT
+          </button>
         </>
       )}
     </div>

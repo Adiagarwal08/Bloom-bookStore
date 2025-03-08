@@ -10,6 +10,7 @@ import "./controllers/authController.js";
 import authRoutes from "./routes/auth.js";
 import MongoStore from "connect-mongo";
 import session from "express-session";
+import emailRoutes from "./routes/email.js";
 
 dotenv.config();
 
@@ -61,6 +62,8 @@ app.use("/api/carts", cartRoutes);
 app.use("/api/wishlists", wishlistRoutes);
 
 app.use("/api/user", userRoutes);
+
+app.use("/api/email", emailRoutes);
 
 //connect to mongoDB
 mongoose
