@@ -43,7 +43,7 @@ const Login = () => {
         </button>
       </a>
 
-      <div className="quote-divider">
+      <div className="quote-divider-login">
         <div className="or-line"></div>
         <span className="or">OR</span>
         <div className="or-line"></div>

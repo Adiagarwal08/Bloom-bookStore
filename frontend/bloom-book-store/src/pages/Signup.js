@@ -42,7 +42,7 @@ const Signup = () => {
           Signup with Google
         </button>
       </a>
-      <div className="quote-divider">
+      <div className="quote-divider-signup">
         <div className="or-line"></div>
         <span className="or">OR</span>
         <div className="or-line"></div>
