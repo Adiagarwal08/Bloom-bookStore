@@ -11,7 +11,7 @@ import authRoutes from "./routes/auth.js";
 import MongoStore from "connect-mongo";
 import session from "express-session";
 import emailRoutes from "./routes/email.js";
-
+import cors from "cors";
 dotenv.config();
 
 //express app
@@ -19,6 +19,11 @@ const app = express();
 
 //middleware
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["https://bloom-book-store.vercel.app", "http://localhost:3000"],
+  })
+);
 app.use(
   session({
     secret: process.env.SESSION_SECRET, // Ensure this is set in .env

@@ -8,7 +8,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await fetch("/api/books/five");
+      const response = await fetch(
+        process.env.REACT_APP_API_URI + "/api/books/five"
+      );
       const json = await response.json();
 
       if (response.ok) {

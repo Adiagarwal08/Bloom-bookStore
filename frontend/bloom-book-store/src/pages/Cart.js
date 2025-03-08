@@ -18,11 +18,14 @@ const Cart = () => {
     const fetchItem = async () => {
       console.log(user);
       try {
-        const response = await fetch("/api/carts", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await fetch(
+          process.env.REACT_APP_API_URI + "/api/carts",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         if (!response.ok) throw new Error("No such item");
 
         const json = await response.json();
@@ -44,11 +47,14 @@ const Cart = () => {
     }
 
     try {
-      const response = await fetch("/api/email/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: user.email }),
-      });
+      const response = await fetch(
+        process.env.REACT_APP_API_URI + "/api/email/send-email",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: user.email }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {

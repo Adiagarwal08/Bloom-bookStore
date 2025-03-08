@@ -43,11 +43,14 @@ const Product = () => {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const response = await fetch("/api/wishlists", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await fetch(
+          process.env.REACT_APP_API_URI + "/api/wishlists",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         if (!response.ok) throw new Error("Failed to fetch book");
 
         const data = await response.json();
@@ -101,11 +104,14 @@ const Product = () => {
     }
     try {
       //✅ Step 1: fetch existing cart data
-      const cartResponse = await fetch("/api/carts", {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const cartResponse = await fetch(
+        process.env.REACT_APP_API_URI + "/api/carts",
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       if (!cartResponse.ok) throw new Error("Failed to fetch cart");
       const cartItems = await cartResponse.json();
 
@@ -138,14 +144,17 @@ const Product = () => {
           wishlist: addedToWishlist,
         };
 
-        const response = await fetch("/api/carts", {
-          method: "POST",
-          body: JSON.stringify(cartItem),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await fetch(
+          process.env.REACT_APP_API_URI + "/api/carts",
+          {
+            method: "POST",
+            body: JSON.stringify(cartItem),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         const json = await response.json();
         console.log("Item added to cart", json);
 
@@ -188,11 +197,14 @@ const Product = () => {
         setAddedToWishlist(false);
 
         // ✅ Also update the cart if the book exists in the cart
-        const cartResponse = await fetch("/api/carts", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const cartResponse = await fetch(
+          process.env.REACT_APP_API_URI + "/api/carts",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         if (!cartResponse.ok) throw new Error("Failed to fetch cart");
 
         const cartItems = await cartResponse.json();
@@ -219,14 +231,17 @@ const Product = () => {
           title: book.title,
         };
 
-        const response = await fetch("/api/wishlists", {
-          method: "POST",
-          body: JSON.stringify(wishlistItem),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await fetch(
+          process.env.REACT_APP_API_URI + "/api/wishlists",
+          {
+            method: "POST",
+            body: JSON.stringify(wishlistItem),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         const json = await response.json();
         console.log("Item added to wishlist", json);
 
@@ -235,11 +250,14 @@ const Product = () => {
         setAddedToWishlist(true);
 
         // ✅ Also update the cart if the book exists in the cart
-        const cartResponse = await fetch("/api/carts", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const cartResponse = await fetch(
+          process.env.REACT_APP_API_URI + "/api/carts",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         if (!cartResponse.ok) throw new Error("Failed to fetch cart");
 
         const cartItems = await cartResponse.json();

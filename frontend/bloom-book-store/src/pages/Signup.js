@@ -25,7 +25,7 @@ const Signup = () => {
   return (
     <form className="signup" onSubmit={handleSubmit}>
       <h1>Sign up</h1>
-      <a href="http://localhost:4000/auth/google">
+      <a href={`${process.env.REACT_APP_API_URI}/auth/google`}>
         <button
           type="button"
           className="google"

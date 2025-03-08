@@ -15,7 +15,9 @@ const Catalogue = () => {
   useEffect(() => {
     const fetchBooksC = async () => {
       try {
-        const response = await fetch("/api/books");
+        const response = await fetch(
+          process.env.REACT_APP_API_URI + "/api/books"
+        );
         if (!response.ok) throw new Error("Failed to fetch books");
         const json = await response.json();
         setBooksC(json);

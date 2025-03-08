@@ -53,7 +53,9 @@ const Navbar = () => {
 
   const searchFunction = async (searchTitle) => {
     try {
-      const response = await fetch("/api/books");
+      const response = await fetch(
+        process.env.REACT_APP_API_URI + "/api/books"
+      );
 
       if (!response.ok) throw new Error("Failed fetching books.");
 
