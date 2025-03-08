@@ -28,7 +28,9 @@ const Product = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await fetch(`/api/books/${id}`);
+        const response = await fetch(
+          process.env.REACT_APP_API_URI + `/api/books/${id}`
+        );
         if (!response.ok) throw new Error("Failed to fetch book");
 
         const json = await response.json();
@@ -81,7 +83,9 @@ const Product = () => {
   useEffect(() => {
     const fetchFourBooks = async () => {
       try {
-        const response = await fetch(`/api/books/four`);
+        const response = await fetch(
+          process.env.REACT_APP_API_URI + `/api/books/four`
+        );
         if (!response.ok) throw new Error("Failed to fetch book");
 
         const json = await response.json();
@@ -123,14 +127,17 @@ const Product = () => {
       if (existingItem) {
         // ✅ Step 3: If Item Exists, Update Quantity
 
-        const updateResponse = await fetch(`/api/carts/${existingItem._id}`, {
-          method: "PATCH",
-          body: JSON.stringify({ quantity: existingItem.quantity + 1 }),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const updateResponse = await fetch(
+          process.env.REACT_APP_API_URI + `/api/carts/${existingItem._id}`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({ quantity: existingItem.quantity + 1 }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         if (!updateResponse.ok)
           throw new Error("Failed to update item quantity");
       } else {
@@ -181,7 +188,8 @@ const Product = () => {
       if (addedToWishlist) {
         // delete book from wishlist
         const deleteResponse = await fetch(
-          `/api/wishlists/${existingWishlistItem._id}`,
+          process.env.REACT_APP_API_URI +
+            `/api/wishlists/${existingWishlistItem._id}`,
           {
             method: "DELETE",
             headers: {
@@ -213,14 +221,17 @@ const Product = () => {
         );
 
         if (cartItem) {
-          const updateCartResponse = await fetch(`/api/carts/${cartItem._id}`, {
-            method: "PATCH",
-            body: JSON.stringify({ wishlist: false }), // Set wishlist to false
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user.token}`,
-            },
-          });
+          const updateCartResponse = await fetch(
+            process.env.REACT_APP_API_URI + `/api/carts/${cartItem._id}`,
+            {
+              method: "PATCH",
+              body: JSON.stringify({ wishlist: false }), // Set wishlist to false
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
           if (!updateCartResponse.ok)
             throw new Error("Failed to update cart wishlist");
           console.log("Cart updated: Wishlist removed");
@@ -266,14 +277,17 @@ const Product = () => {
         );
 
         if (cartItem) {
-          const updateCartResponse = await fetch(`/api/carts/${cartItem._id}`, {
-            method: "PATCH",
-            body: JSON.stringify({ wishlist: true }), // Set wishlist to true
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user.token}`,
-            },
-          });
+          const updateCartResponse = await fetch(
+            process.env.REACT_APP_API_URI + `/api/carts/${cartItem._id}`,
+            {
+              method: "PATCH",
+              body: JSON.stringify({ wishlist: true }), // Set wishlist to true
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
           if (!updateCartResponse.ok)
             throw new Error("Failed to update cart wishlist");
           console.log("Cart updated: Wishlist added");
