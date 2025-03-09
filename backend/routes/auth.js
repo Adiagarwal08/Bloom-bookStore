@@ -25,7 +25,7 @@ router.get(
 
     // Redirect to frontend with token
     res.redirect(
-      `${process.env.REACT_APP_API_URI}/auth-success?token=${token}&email=${req.user.email}`
+      `https://bloom-book-store.vercel.app/auth-success?token=${token}&email=${req.user.email}`
     );
   }
 );
