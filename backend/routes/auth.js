@@ -25,7 +25,7 @@ router.get(
 
     // Redirect to frontend with token
     res.redirect(
-      `http://localhost:3000/auth-success?token=${token}&email=${req.user.email}`
+      `${process.env.REACT_APP_API_URI}/auth-success?token=${token}&email=${req.user.email}`
     );
   }
 );
