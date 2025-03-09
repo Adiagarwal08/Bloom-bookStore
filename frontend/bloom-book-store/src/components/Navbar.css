@@ -1,6 +1,5 @@
 .navbar-container {
   background: #090909;
-  max-width: 1400px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -90,4 +89,9 @@
   border: 1px solid #ffffff;
   border-radius: 50%;
   padding: 7px;
+  height: 2vh;
+  width: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -6,7 +6,7 @@
   text-align: center;
   color: #ffffff;
   width: 100vw;
-  height: 766px;
+  height: 100vh;
   background-image: url("../images/home.png");
   background-size: cover;
   background-position: center;
@@ -31,9 +31,9 @@
   border-radius: 20px;
   padding: 10px 12px;
   border: none;
-  font-size: 12px;
+  font-size: 1em;
   font-weight: 600;
-  width: 8vw;
+  width: 10vw;
   cursor: pointer;
   z-index: 2;
 }
@@ -44,6 +44,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 80vw;
 }
 
 .home-div p {
@@ -53,7 +54,7 @@
 .quote-divider {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin: 2vh 0;
 }
 
 .line {
@@ -95,6 +96,7 @@
 }
 
 .home-books {
+  justify-content: space-between;
   margin-top: 5vh;
   display: flex;
   gap: 4vw;
@@ -102,7 +104,7 @@
 }
 
 .home-books img {
-  width: 150px;
+  width: 12vw;
   height: auto;
   cursor: pointer;
 }
