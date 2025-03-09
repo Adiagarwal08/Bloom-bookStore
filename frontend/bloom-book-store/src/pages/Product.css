@@ -1,6 +1,7 @@
 .product {
   position: relative;
   top: 20vh;
+  width: 80vw;
   padding: 5vh 10vw;
   align-items: center;
   display: flex;

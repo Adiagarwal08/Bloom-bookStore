@@ -1,6 +1,7 @@
 .cart {
   position: relative;
   top: 10vh;
+  width: 80vw;
   padding: 5vh 10vw;
   display: flex;
   flex-direction: column;
