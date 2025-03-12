@@ -24,12 +24,15 @@ const CartItem = ({ item }) => {
     }
     try {
       if (quantity === 0) {
-        const deleteResponse = await fetch(`/api/carts/${item._id}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const deleteResponse = await fetch(
+          process.env.REACT_APP_API_URI + `/api/carts/${item._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         const json = await deleteResponse.json();
 
         if (!deleteResponse.ok) throw new Error("Failed to delete item");
@@ -37,14 +40,17 @@ const CartItem = ({ item }) => {
         console.log("Item deleted successfully", json);
         dispatch({ type: "REMOVE_CART", payload: item._id });
       } else {
-        const updateResponse = await fetch(`/api/carts/${item._id}`, {
-          method: "PATCH",
-          body: JSON.stringify({ quantity: quantity }),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const updateResponse = await fetch(
+          process.env.REACT_APP_API_URI + `/api/carts/${item._id}`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({ quantity: quantity }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         if (!updateResponse.ok)
           throw new Error("Failed to update item quantity");
 
