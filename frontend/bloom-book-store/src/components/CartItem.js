@@ -15,7 +15,7 @@ const CartItem = ({ item }) => {
 
   useEffect(() => {
     setWishlist(item.wishlist);
-  }, [item.wishlist, item.quantity]);
+  }, [item.wishlist]);
   const total = item.price * item.quantity;
 
   const handleClick = async (quantity) => {
@@ -23,10 +23,6 @@ const CartItem = ({ item }) => {
       return;
     }
     try {
-      dispatch({
-        type: "UPDATE_CART",
-        payload: { ...item, quantity },
-      });
       if (quantity === 0) {
         const deleteResponse = await fetch(
           process.env.REACT_APP_API_URI + `/api/carts/${item._id}`,
@@ -59,10 +55,7 @@ const CartItem = ({ item }) => {
           throw new Error("Failed to update item quantity");
 
         const updatedItem = await updateResponse.json();
-        dispatch({
-          type: "UPDATE_CART",
-          payload: { ...item, quantity: updatedItem.quantity },
-        });
+        dispatch({ type: "UPDATE_CART", payload: updatedItem });
       }
       console.log("quantity updated");
     } catch (error) {

@@ -38,7 +38,7 @@ const Cart = () => {
     if (user) {
       fetchItem();
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, carts]);
 
   const handleCheckout = async () => {
     if (!user || !user.email) {

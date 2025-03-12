@@ -14,11 +14,8 @@ const cartsReducer = (state, action) => {
       };
     case "UPDATE_CART":
       return {
-        ...state,
         carts: state.carts.map((cart) =>
-          cart._id === action.payload._id
-            ? { ...cart, ...action.payload }
-            : cart
+          cart._id === action.payload._id ? action.payload : cart
         ),
       };
     case "REMOVE_CART":
