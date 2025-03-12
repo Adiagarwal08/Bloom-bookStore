@@ -55,7 +55,10 @@ const CartItem = ({ item }) => {
           throw new Error("Failed to update item quantity");
 
         const updatedItem = await updateResponse.json();
-        dispatch({ type: "UPDATE_CART", payload: updatedItem });
+        dispatch({
+          type: "UPDATE_CART",
+          payload: { ...item, quantity: updatedItem.quantity },
+        });
       }
       console.log("quantity updated");
     } catch (error) {
