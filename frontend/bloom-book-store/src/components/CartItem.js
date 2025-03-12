@@ -15,7 +15,7 @@ const CartItem = ({ item }) => {
 
   useEffect(() => {
     setWishlist(item.wishlist);
-  }, [item.wishlist]);
+  }, [item.wishlist, item.quantity]);
   const total = item.price * item.quantity;
 
   const handleClick = async (quantity) => {

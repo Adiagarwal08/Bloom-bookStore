@@ -16,7 +16,9 @@ const cartsReducer = (state, action) => {
       return {
         ...state,
         carts: state.carts.map((cart) =>
-          cart._id === action.payload._id ? action.payload : cart
+          cart._id === action.payload._id
+            ? { ...cart, ...action.payload }
+            : cart
         ),
       };
     case "REMOVE_CART":
