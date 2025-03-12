@@ -23,6 +23,10 @@ const CartItem = ({ item }) => {
       return;
     }
     try {
+      dispatch({
+        type: "UPDATE_CART",
+        payload: { ...item, quantity },
+      });
       if (quantity === 0) {
         const deleteResponse = await fetch(
           process.env.REACT_APP_API_URI + `/api/carts/${item._id}`,
